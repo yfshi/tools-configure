@@ -1,0 +1,11 @@
+[user]
+	email = yfshi@xxx.com
+	name = yfshi
+[color]
+	ui = true
+	filemode = false
+[diff]
+	tool = vimdiff
+[log]
+	decorate = short
+	date = iso
