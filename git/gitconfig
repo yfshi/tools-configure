@@ -4,6 +4,7 @@
 [color]
 	ui = true
 	filemode = false
+        excludesfile = /home/xxx/.ignorefile
 [diff]
 	tool = vimdiff
 [log]
