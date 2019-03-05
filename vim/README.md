@@ -9,6 +9,7 @@ yum install ctags
 把plugins/ctrlp/*拷贝到$HOME/.vim目录下
 
 ## 编辑$HOME/.vimrc或者把vimrc拷贝到$HOME/.vimrc
+```shell
 """""""""""""""""""""""""""""""""""""""""""""
 "                common                     "
 """""""""""""""""""""""""""""""""""""""""""""
@@ -32,3 +33,4 @@ let g:ctrlp_extensions = ['tag']
 :map <F7> <ESC>:CtrlPTag<CR>
 :imap <F7> <ESC>:CtrlPTag<CR>
 :cmap <F7> <ESC>:CtrlPTag<CR>
+```
