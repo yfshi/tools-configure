@@ -1,56 +1,23 @@
+"""""""""""""""""""""""""""""""""""""""""""""
+"                common                     "
+"""""""""""""""""""""""""""""""""""""""""""""
 set autoindent
 set cindent
 set tabstop=4 shiftwidth=4 noexpandtab
 set encoding=utf-8 fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set nocompatible
-if has('mouse')
-	set mouse=a
-endif
-
-
-"""""""""""""""""""""""""""""""""""""""""""""
-"                Plugins                    "
-"""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-	Plugin 'VundleVim/Vundle.vim'
-	Plugin 'taglist.vim'
-	Plugin 'http://github.com/vim-scripts/SrcExpl'
-	Plugin 'http://github.com/vim-scripts/Trinity'
-	Plugin 'ctrlp.vim'
-call vundle#end()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""
-"                Trinity                    "
-"""""""""""""""""""""""""""""""""""""""""""""
-nmap <F8> :TrinityToggleAll<CR>
-nmap <F9> :TrinityToggleSourceExplorer<CR>
-nmap <F10> :TrinityToggleTagList<CR>
-nmap <F11> :TrinityToggleNERDTree<CR>
-nmap <f12> :!cscope -Rbq;ctags -R<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""
-"                cscope                     "
-"""""""""""""""""""""""""""""""""""""""""""""
-if has("cscope")
-	if filereadable("cscope.out")
-		cs add cscope.out
-	endif
-	nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-	nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-	nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-	nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-endif
-
+set number
 
 """""""""""""""""""""""""""""""""""""""""""""
 "                ctrlp                      "
 """""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_by_filename = 1
-let g:ctrlp_max_height = 50
+let g:ctrlp_regexp = 1
+let g:ctrlp_working_path_mode = '0'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:100,results:100'
+let g:ctrlp_extensions = ['tag']
+:map <F7> <ESC>:CtrlPTag<CR>
+:imap <F7> <ESC>:CtrlPTag<CR>
+:cmap <F7> <ESC>:CtrlPTag<CR>
