@@ -1,12 +1,9 @@
 # vim配置
 
-## ctags
+## 安装cscope
 ```shell
-yum install ctags
+yum install cscope
 ```
-
-## 插件
-把plugins/ctrlp/*拷贝到$HOME/.vim目录下
 
 ## 编辑$HOME/.vimrc或者把vimrc拷贝到$HOME/.vimrc
 ```shell
@@ -21,16 +18,27 @@ set nocompatible
 set number
 
 """""""""""""""""""""""""""""""""""""""""""""
-"                ctrlp                      "
+"                cscope                     "
 """""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_by_filename = 1
-let g:ctrlp_regexp = 1
-let g:ctrlp_working_path_mode = '0'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:100,results:100'
-let g:ctrlp_extensions = ['tag']
-:map <F7> <ESC>:CtrlPTag<CR>
-:imap <F7> <ESC>:CtrlPTag<CR>
-:cmap <F7> <ESC>:CtrlPTag<CR>
+```shell
+let g:cswin = 0
+function! OpenCloseQuickfix()
+	if g:cswin == 1
+		exec 'cclose'
+		let g:cswin = 0
+	else
+		exec 'vert copen 30'
+		let g:cswin = 1
+	endif
+endfunction
+
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+:map <F11> :!cscope -RbCkq<CR><CR>
+:map <F12> :!cscope -u<CR><CR>
+:map <F8> :call OpenCloseQuickfix()<CR><C-w>w<CR>
+:map <C-j> :cnext<CR>
+:map <C-k> :cprev<CR>
+:map <F7> :cs find s <C-R>=expand("<cword>")<CR><CR>
+:map <F6> :cs find t <C-R>=expand("<cword>")<CR><CR>
 ```
